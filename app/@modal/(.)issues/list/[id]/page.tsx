@@ -5,6 +5,9 @@ import IssueDetails from '@/app/issues/list/[id]/IssueDetails';
 import { getServerSession } from 'next-auth';
 import authOptions from '@/app/auth/authOptions';
 import { cache } from 'react';
+import { DialogClose } from '@radix-ui/react-dialog';
+import DialogCloseButton from './modalcomp';
+import Modal from './modalcomp';
 
 interface Props {
   params: { id: string };
@@ -20,21 +23,9 @@ const IssueDetailPageModal = async ({ params }: Props) => {
   if (!issue) notFound();
 
   return (
-    <Grid columns={{ initial: '1', sm: '5' }} gap="5">
-      <Box className="md:col-span-4">
-        <h1>THIS INTERCEPT</h1>
-                <IssueDetails issue={issue} />
-      </Box>
-      {session && (
-        <Box>
-          <Flex direction="column" gap="4">
-            {/* <AssigneeSelect issue={issue} />
-            <EditIssueButton issueId={issue.id} />
-            <DeleteIssueButton issueId={issue.id} /> */}
-          </Flex>
-        </Box>
-      )}
-    </Grid>
+
+                <Modal triggerText={"hello"}> <IssueDetails issue={issue} /></Modal>
+
   );
 };
 
